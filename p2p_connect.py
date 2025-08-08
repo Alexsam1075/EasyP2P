@@ -249,13 +249,3 @@ class P2PNode:
                 pass
         if self.pc:
             await self.pc.close()
-
-# --- Пример использования ---
-if __name__ == "__main__":
-    async def demo():
-        nick = input("Введи ник: ").strip() or "anon"
-        node = P2PNode(nick)
-        node.on_message = lambda msg: print(f"{msg.sender}: {msg.data}")
-        role = input("Роль (offer/answer): ").strip().lower()
-        await node.start(role)
-    asyncio.run(demo())
